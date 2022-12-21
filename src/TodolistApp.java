@@ -5,7 +5,7 @@ public class TodolistApp {
     public static java.util.Scanner scanner = new java.util.Scanner(System.in);
 
     public static void main(String[] args) {
-        testInput();
+        viewShowTodoList();
     }
 
     public static void showTodoList() {
@@ -106,15 +106,80 @@ public class TodolistApp {
         System.out.println("Hello " + name);
     }
 
-    public static void viewShowTodoList() {
+    public static void viewShowTodoList(){
+        while (true) {
+            showTodoList();
 
+            System.out.println("MENU : ");
+            System.out.println("1. Add");
+            System.out.println("2. Delete");
+            System.out.println("x. Exit");
+
+            var input = input("Select");
+
+            if (input.equals("1")) {
+                viewAddTodoList();
+            } else if(input.equals("2")) {
+                viewDeleteTodoList();
+            } else if(input.equals("x")){
+                break;
+            }else {
+                System.out.println("Options are not understood");
+            }
+        }
     }
 
-    public static void viewAddTodoList() {
+    private static void testViewShowTodoList() {
+        addTodoList("Learn Java day 1");
+        addTodoList("Learn Java day 2");
+        addTodoList("Learn Java day 3");
+        addTodoList("Learn Java day 4");
+        addTodoList("Learn Java day 5");
+        viewShowTodoList();
+    }
 
+    public static void viewAddTodoList(){
+        System.out.println("ADD TODOLIST");
+
+        var todo = input("Todo (x if cancel)");
+
+        if (todo.equals("x")){
+            // batal
+        } else {
+            addTodoList(todo);
+        }
+    }
+
+    public static void testViewAddTodoList(){
+        viewAddTodoList();
+
+        showTodoList();
     }
 
     public static void viewDeleteTodoList() {
+        System.out.println("DELETE TODOLIST");
 
+        var number = input("The number to be deleted (x if cancel)");
+
+        if (number.equals("x")){
+            // batal
+        } else {
+            boolean success = deleteTodoList(Integer.valueOf(number));
+            if (!success){
+                System.out.println("Failed to delete todolist : " + number);
+            }
+        }
+    }
+
+    public static void testViewDeleteTodoList() {
+        addTodoList("Learn Java day 1");
+        addTodoList("Learn Java day 2");
+        addTodoList("Learn Java day 3");
+
+        showTodoList();
+
+        viewDeleteTodoList();
+
+        showTodoList();
     }
 }
