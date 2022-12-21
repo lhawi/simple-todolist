@@ -2,8 +2,10 @@ public class TodolistApp {
 
     public static String[] model = new String[15];
 
+    public static java.util.Scanner scanner = new java.util.Scanner(System.in);
+
     public static void main(String[] args) {
-        testDeleteTodoList();
+        testInput();
     }
 
     public static void showTodoList() {
@@ -91,6 +93,17 @@ public class TodolistApp {
         System.out.println(result);
 
         showTodoList();
+    }
+
+    public static String input(String info) {
+        System.out.print(info + " : ");
+        String data = scanner.nextLine();
+        return data;
+    }
+
+    public static void testInput() {
+        var name = input("Name");
+        System.out.println("Hello " + name);
     }
 
     public static void viewShowTodoList() {
