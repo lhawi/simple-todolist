@@ -17,4 +17,16 @@ public class TodolistApp {
     public static void deleteTodoList(){
 
     }
+
+    public static void viewShowTodoList(){
+
+    }
+
+    public static void viewAddTodoList(){
+
+    }
+
+    public static void viewDeleteTodoList(){
+
+    }
 }
